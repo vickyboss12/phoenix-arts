@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoenix Arts - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Phoenix Arts</div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="art.html">Art</a></li>
+                <li><a href="submit-art.html">Submit Art</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="#" id="logoutBtn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="hero-section">
+            <h1 class="fade-in">Welcome to Phoenix Arts</h1>
+            <p class="fade-in-delay">Express your creativity through art</p>
+            <a href="submit-art.html" class="cta-button slide-up">Order Now</a>
+        </div>
+
+        <div class="gallery-preview-section">
+            <h2 class="fade-in">Our Art Gallery</h2>
+            <div id="homeGalleryGrid" class="gallery-grid">
+                <!-- Gallery items will be dynamically loaded here -->
+            </div>
+            <div id="emptyHomeGallery" class="empty-state" style="display: none;">
+                <p>No art items in gallery yet.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Phoenix Arts. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

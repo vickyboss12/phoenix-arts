@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Phoenix Arts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Phoenix Arts - Admin</div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="admin-dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="#" id="adminLogoutBtn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="admin-header fade-in">
+            <h1>Admin Dashboard</h1>
+            <p>Manage orders, upload art, and view user details</p>
+        </div>
+
+        <div class="admin-tabs">
+            <button class="tab-btn active" data-tab="orders">Orders Management</button>
+            <button class="tab-btn" data-tab="art">Upload Art</button>
+            <button class="tab-btn" data-tab="users">User Details</button>
+        </div>
+
+        <!-- Orders Management Tab -->
+        <div id="ordersTab" class="tab-content active">
+            <div class="page-header">
+                <h2>Orders Management</h2>
+                <input type="text" id="searchOrders" placeholder="Search orders..." class="search-input">
+            </div>
+
+            <div id="ordersTable" class="orders-table-container">
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Sheet Size</th>
+                            <th>Position</th>
+                            <th>Members</th>
+                            <th>Frames</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <!-- Orders will be dynamically loaded here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="emptyOrders" class="empty-state">
+                <p>No orders found.</p>
+            </div>
+        </div>
+
+        <!-- Upload Art Tab -->
+        <div id="artTab" class="tab-content">
+            <div class="page-header">
+                <h2>Upload Art</h2>
+            </div>
+
+            <div class="form-container">
+                <form id="artUploadForm" class="art-form">
+                    <div class="form-group">
+                        <label for="artTitle">Art Title <span class="required">*</span></label>
+                        <input type="text" id="artTitle" name="artTitle" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="artDescription">Description</label>
+                        <textarea id="artDescription" name="artDescription" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="artImage">Image <span class="required">*</span></label>
+                        <input type="file" id="artImage" name="artImage" accept="image/*" required>
+                        <div id="artImagePreview" class="image-preview"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="artCategory">Category</label>
+                        <select id="artCategory" name="artCategory">
+                            <option value="Art">Art</option>
+                            <option value="Drawing">Drawing</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Upload Art</button>
+                </form>
+            </div>
+
+            <div class="gallery-section">
+                <h3>Gallery Items</h3>
+                <div id="adminGalleryGrid" class="gallery-grid">
+                    <!-- Gallery items will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- View Order Modal -->
+        <div id="viewOrderModal" class="modal">
+            <div class="modal-content bill-modal">
+                <span class="close">&times;</span>
+                <h2>Order Details</h2>
+                <div id="viewOrderContent" class="bill-content"></div>
+            </div>
+        </div>
+
+        <!-- User Details Tab -->
+        <div id="usersTab" class="tab-content">
+            <div class="page-header">
+                <h2>User Details</h2>
+                <input type="text" id="searchUsers" placeholder="Search users..." class="search-input">
+            </div>
+
+            <div id="usersTable" class="orders-table-container">
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Signup Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <!-- Users will be dynamically loaded here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="emptyUsers" class="empty-state">
+                <p>No users found.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Phoenix Arts. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

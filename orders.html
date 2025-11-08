@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - Phoenix Arts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Phoenix Arts</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="art.html">Art</a></li>
+                <li><a href="submit-art.html">Submit Art</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="orders.html" class="active">Orders</a></li>
+                <li><a href="#" id="adminLoginLink">Admin Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Orders Management</h1>
+            <div class="header-actions">
+                <input type="text" id="searchOrders" placeholder="Search orders..." class="search-input">
+            </div>
+        </div>
+
+        <!-- Edit Order Modal -->
+        <div id="editOrderModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Order</h2>
+                <form id="editOrderForm" class="art-form">
+                    <input type="hidden" id="editOrderId" name="orderId">
+                    
+                    <div class="form-group">
+                        <label for="editName">Name <span class="required">*</span></label>
+                        <input type="text" id="editName" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editGender">Gender <span class="required">*</span></label>
+                        <select id="editGender" name="gender" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editPhone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="editPhone" name="phone" pattern="[0-9]{10}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sheet Size <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="editSheetSize" value="A4" required>
+                                <span>A4</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="editSheetSize" value="A3" required>
+                                <span>A3</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Art Position <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="editArtPosition" value="Portrait" required>
+                                <span>Portrait (₹500)</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="editArtPosition" value="Landscape" required>
+                                <span>Landscape (₹800)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editStatus">Status</label>
+                        <select id="editStatus" name="status">
+                            <option value="Pending Payment">Pending Payment</option>
+                            <option value="Paid">Paid</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Update Order</button>
+                        <button type="button" class="cancel-btn" onclick="closeEditOrderModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="ordersTable" class="orders-table-container">
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Sheet Size</th>
+                        <th>Position</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                    <!-- Orders will be dynamically loaded here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="emptyOrders" class="empty-state">
+            <p>No orders found. Submit an art request to create an order!</p>
+        </div>
+    </main>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Admin Login</h2>
+            <form id="adminLoginForm" class="art-form">
+                <div class="form-group">
+                    <label for="adminUsername">Username <span class="required">*</span></label>
+                    <input type="text" id="adminUsername" name="adminUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password <span class="required">*</span></label>
+                    <input type="password" id="adminPassword" name="adminPassword" required>
+                </div>
+                <div id="adminLoginError" class="error-message" style="display: none; color: red; margin-bottom: 1rem;"></div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Phoenix Arts. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
